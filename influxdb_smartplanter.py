@@ -58,8 +58,7 @@ def on_message(mqtt_client, userdata, msg):
             payload = float(msg.payload.decode("utf-8"))
             measurement = "pressure"
         elif msg.topic == rain_topic:
-            raw_data = int(msg.payload.decode("utf-8"))
-            payload = map_range(raw_data, 0, 1024, 100, 0)
+            payload = int(msg.payload.decode("utf-8"))
             measurement = "rain"
         topic = msg.topic
     except ValueError as e:
